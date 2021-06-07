@@ -189,11 +189,13 @@ agent内部也有一个函数更新状态，当环境和agent的状态
 
 • **Full observability**: agent directly observes the environment state, formally as Markov decision process (MDP)
 
-![image-20210607110436159](../Images/image-20210607110436159.png)
+<img src="../Images/image-20210607110436159.png" alt="image-20210607110436159" style="zoom:25%;" />
 
 
 
+Partial observability: agent indirectly observes the environment, formally as partially observable Markov decision process (POMDP)
 
+• Black jack (only see public cards), Atari game with pixel observation,
 
 • What happens next depends on the history
 • State is the function used to determine what happens next
