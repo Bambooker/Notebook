@@ -42,7 +42,69 @@ Recognizing chairs 对CV系统相对较难
 
 
 
-What is (computer) vision?
+What is CV?
 
 <img src="../Images/image-20210605105254979.png" alt="image-20210605105254979"  />
+
+The goal of CV
+
+To bridge the gap between pixels and “meaning”M 
+
+我们看到的是图片，计算机看到的矩阵。
+
+
+
+人类视觉系统
+
+1981 hubel wiesel 
+
+生物大脑皮层的某个神经元往往会对一些简单的线条，集合图形产生兴奋。
+
+
+
+计算机视觉系统
+
+Origins of computer vision: an MIT summer project
+
+1966年独立出来的学科
+
+
+
+学科大牛 David Marr
+
+Computational theory:
+What is the goal of the computation (task) and what are the constraints that are known or can be brought to bear on the problem?
+
+计算理论：到底要做什么事情，事情的约束是什么。
+
+Representations and algorithms: 
+
+How are the input, output, and intermediate information represented,
+and which algorithms are used to calculate the desired result?
+
+表达方式：输入输出，计算过程都应该如何表示。如输入时图像，输出是123数字。
+
+Hardware implementation: 
+
+How are the representations and algorithms mapped onto actual hardware, e.g., a biological vision system or a specialized piece of silicon? Conversely, how can hardware constraints be used to guide the choice of representation and algorithm?
+
+硬件实现：如何将算法用到设备上，如何通过设备的约束指导算法的设计。
+
+这三个层次相当于诸葛亮的隆中对。
+
+有了框架就有了不同的人干不同的事情，有趣做理论建模的，算法表达的，应用实现的。其中第二层最难，包括从图像中提取边的信号，从边的信号组建出2D图形，从2D图形组建出3D图形。
+
+ICCV颁发的马尔奖
+
+
+
+What kind of information can we extract from an image?
+Metric 3D information 三维信息
+Semantic information 语义信息
+
+3D信息更多的是用来测量，比如SLAM，同时建图和定位；还有三维模型重建
+
+图像识别
+
+计算机视觉就可以分为两大部分 三维重建和图像识别
 
