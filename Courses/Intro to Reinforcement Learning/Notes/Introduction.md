@@ -101,11 +101,7 @@ Traditional CV and deep CV
 
 ![image-20210607100721582](../Images/image-20210607100721582.png)
 
-传统CV：通过两步完成。输入图片，提取它的特征；然后训练分类器，分类图片。
-
-深度CV：有了卷积神经网络后，就将特征提取和分类结合到了一起，得到了一个端到端的训练。
-
-Standard RL and deep RL
+4
 
 ![image-20210607100841345](../Images/image-20210607100841345.png)
 
@@ -175,27 +171,165 @@ agent的目的就是得到一系列动作，使得最终结果的奖励最大化
 
 • The history is the sequence of observations, actions, rewards.
 
-![image-20210607105754375](../Images/image-20210607105754375.png)
+<img src="../Images/image-20210607105754375.png" alt="image-20210607105754375" style="zoom:33%;" />
+
+What happens next depends on the history
+State is the function used to determine what happens next：<img src="../Images/image-20210607111420599.png" alt="image-20210607111420599" style="zoom:33%;" />
 
 agent在采取当前动作时，会依赖于之前的观测，动作和奖励，所以可以把整个任务的状态看成是历史的函数。
 
-
-
 Environment state and agent state
 
-![image-20210607110303487](../Images/image-20210607110303487.png)
+<img src="../Images/image-20210607110303487.png" alt="image-20210607110303487" style="zoom: 33%;" />
 
 agent内部也有一个函数更新状态，当环境和agent的状态
 
 • **Full observability**: agent directly observes the environment state, formally as Markov decision process (MDP)
 
-<img src="../Images/image-20210607110436159.png" alt="image-20210607110436159" style="zoom:25%;" />
-
-
+<img src="../Images/image-20210607110436159.png" alt="image-20210607110436159" style="zoom: 33%;" />
 
 Partial observability: agent indirectly observes the environment, formally as partially observable Markov decision process (POMDP)
 
-• Black jack (only see public cards), Atari game with pixel observation,
+• Black jack (only see public cards), Atari game with pixel observation
 
-• What happens next depends on the history
-• State is the function used to determine what happens next
+当环境的状态和agent的状态等价时，我们说环境可以完全被观测到。但有些情况下，agent不能完全获得环境的状态，比如有些时候agent只能获得像素上的信息，而无法获得环境全部的信息
+
+
+
+Major Components of an RL Agent
+
+• Policy: agent’s behavior function
+
+决策函数：用来选取下一步的动作
+
+
+
+
+
+Policy
+
+• A policy is the agent’s behavior model
+• It is a map function from state/observation to action.
+• Stochastic policy: Probabilistic sample <img src="../Images/image-20210607113404157.png" alt="image-20210607113404157" style="zoom: 33%;" />
+• Deterministic policy: <img src="../Images/image-20210607113903842.png" alt="image-20210607113903842" style="zoom:33%;" />
+
+policy决定了agent的行为，这个函数的输入是状态，输出是动作。分为两种：随机策略和决定性策略。
+
+Stochastic policy（随机策略）
+
+是一个从状态集S 到动作集A 的条件概率分布。输入一个状态s，所有的动作都有一个概率（如向上的概率为0.3，向下的概率为0.7）；然后对这个分布进行采样（sample），最后获得实际采取的动作。
+
+Deterministic policy（决定性策略）
+
+是一个状态集S 到动作集A 的映射。输入一个状态s，采取极大化（最有可能的概率），提前决定好所有的动作中有一个概率为1，即一直采取这个动作。
+
+
+
+Value function
+
+
+
+Expected discounted sum of future rewards under a particular policy
+
+
+• Discount factor weights immediate vs future rewards
+
+• Used to quantify goodness/badness of states and actions
+
+<img src="../Images/image-20210607120943678.png" alt="image-20210607120943678" style="zoom: 50%;" />
+
+• Q-function (could be used to select among actions)
+
+<img src="../Images/image-20210608154445157.png" alt="image-20210608154445157" style="zoom:50%;" />
+
+价值函数：对当前状态进行估价，估计在某状态下采取某动作会对之后的结果带来多大的影响，价值大说明进入这个状态采取这个动作越有利。进一步说，就是选择了一个策略后，采取某个动作在未来会获得多大的价值。折价因子：希望在尽可能短的时间内得到更多的奖励，现在获得100元和10年后获得100元最终得到的价值是不一样的。所以对于不同时间的奖励需要乘上相应的折价因子，最后再将他们相加得到价值函数。价值函数实际就是期望。
+
+Model
+A model predicts what the environment will do next
+Predict the next state: <img src="../Images/image-20210608154803882.png" alt="image-20210608154803882" style="zoom:33%;" />
+Predict the next reward: <img src="../Images/image-20210608154819495.png" alt="image-20210608154819495" style="zoom:33%;" />
+
+模型决定了下一个状态是什么样的。包括两部分：状态是怎么转移的，以及下一个奖励是多大。
+
+
+
+Markov Decision Processes (MDPs)
+
+马尔科夫决策过程
+
+
+
+Types of RL Agents based on What the Agent Learns
+
+• Value-based agent:
+
+<img src="../Images/image-20210608160353095.png" alt="image-20210608160353095" style="zoom:50%;" />
+
+​	Explicit: Value function
+
+​	Implicit: Policy (can derive a policy from value function)
+
+
+
+基于价值函数的agent直接学习价值函数，隐式地学习策略，策略是从价值函数推算出来的。
+
+Policy-based agent:
+
+<img src="../Images/image-20210608160406820.png" alt="image-20210608160406820" style="zoom:50%;" />
+
+• Explicit: policy
+• No value function
+
+基于策略的agent直接学习策略函数。
+
+• Actor-Critic agent:
+• Explicit: policy and value function
+
+
+
+Types of RL Agents on if there is model
+•Model-based
+• Explicit: model
+• May or may not have policy and/or value function
+•Model-free
+• Explicit: value function and/or policy function
+• No model.
+
+agent是否学习了环境模型也可以分为两类。
+
+
+
+Exploration and Exploitation
+• Agent only experiences what happens for the actions it tries!
+• How should an RL agent balance its actions?
+
+
+
+Exploration: trying new things that might enable the agent to make better decisions in the 	future.
+
+Exploration就是不断的试错，判断是否会有更好的表现
+
+• Exploitation: choosing actions that are expected to yield good reward given
+the past experience
+
+Exploitation就是直接采取已知的还不错的收益，
+
+• Often there may be an exploration-exploitation trade-off
+• May have to sacrifice reward in order to explore & learn about potentially
+better policy
+
+• Restaurant Selection
+• Exploitation: Go to your favourite restaurant
+• Exploration: Try a new restaurant
+• Online Banner Advertisements
+• Exploitation: Show the most successful advert
+• Exploration: Show a different advert
+• Oil Drilling
+• Exploitation: Drill at the best-known location
+• Exploration: Drill at a new location
+• Game Playing
+• Exploitation: Play the move you believe is
+• Exploration: play an experimental move
+
+
+
