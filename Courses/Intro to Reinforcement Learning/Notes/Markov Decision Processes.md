@@ -19,7 +19,14 @@ Under MDP, the environment is fully observable
 
 The history of states: $ h_{t}=\{s_{1}, s_{2}, s_{3}, \ldots, s_{t}\} $
 
+State $s_{t}$ is Markovian if and only if: 
+$$
+p\left(s_{t+1} \mid s_{t}\right)=p\left(s_{t+1} \mid h_{t}\right)
+$$
 
+$$
+p\left(s_{t+1} \mid s_{t}, a_{t}\right)=p\left(s_{t+1} \mid h_{t}, a_{t}\right)
+$$
 
 
 
