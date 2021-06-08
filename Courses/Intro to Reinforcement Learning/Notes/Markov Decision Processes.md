@@ -17,7 +17,9 @@ Under MDP, the environment is fully observable
 
 ## 马尔科夫性质
 
-The history of states: $$h_{t}=\left\{s_{1}, s_{2}, s_{3}, \ldots, s_{t}\right\}$$
+The history of states: $$
+h_{t}=\left\{s_{1}, s_{2}, s_{3}, \ldots, s_{t}\right\}
+$$
 
 
 
