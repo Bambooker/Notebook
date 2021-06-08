@@ -23,7 +23,9 @@ $$
 
 
 
-
+\begin{equation}
+h_{t}=\left\{s_{1}, s_{2}, s_{3}, \ldots, s_{t}\right\}
+\end{equation}
 
 
 
