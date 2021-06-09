@@ -1,4 +1,4 @@
-# Introduction
+Introduction
 
 What is reinforcement learning and why we care?
 
@@ -6,7 +6,7 @@ What is reinforcement learning and why we care?
 
 A computational approach to learning whereby an **agent** tries to **maximize** the total amount of **reward** it receives while interacting with a complex and uncertain **environment**.
 
-一个agent如何在一个复杂不确定的环境里面，去极大化它能获得的奖励，并且是一直在交互的。agent从环境中获取状态，然后输出一个action决策，放到环境中去，环境会按照决策进行下一步，然后输出下一个状态。agent的目的就是尽可能地从环境中获得奖励哦。
+一个agent如何在一个复杂不确定的环境里面，去极大化它能获得的收益，并且是一直在交互的。agent从环境中获取状态，然后输出一个action，放到环境中去，环境会按照动作进行下一步，然后输出下一个状态。agent的目的就是尽可能地从环境中获得收益哦。
 
 Supervised Learning: Image Classification
 
@@ -42,11 +42,11 @@ Difference between Reinforcement Learning and Supervised Learning
 
 • Trial-and-error exploration (balance between exploration and exploitation)
 
-agent在获得自身学习能力是通过不断的试错，exploration指不断尝试新的行为，新的行为可能获得更高的奖励，也可能一无所获；exploitation指已经知道这个行为可以获得一定的奖励，进行重复就可以了。两者需要权衡
+agent在获得自身学习能力是通过不断的试错，exploration指不断尝试新的行为，新的行为可能获得更高的收益，也可能一无所获；exploitation指已经知道这个行为可以获得一定的收益，进行重复就可以了。两者需要权衡
 
 • There is no supervisor, only a reward signal, which is also delayed
 
-有一个奖励信号，环境会在一定延迟之后给出信号告诉这个行为是否有效，有益。
+有一个收益信号，环境会在一定延迟之后给出信号告诉这个行为是否有效，有益。
 
 
 
@@ -86,7 +86,7 @@ Sample actions (rollout), until game is over, then penalize each action
 
 在强化学习中，通过让agent尝试完成游戏，再去说前面一系列action是正确还是错误的。
 
-rollout指从当前帧生成很多局游戏，让当前的网络和环境进行交互，得到一堆观测，观测可以看成一个轨迹。也就是有一个当前帧，然后有一个决策，得到一个最终结果。通过最后的结果和观测到的序列来训练agent，使得agent获得能力，可以尽可能地得到最好的reward
+rollout指从当前帧生成很多局游戏，让当前的网络和环境进行交互，得到一堆观测，观测可以看成一个轨迹。也就是有一个当前帧，然后有一个策略，得到一个最终结果。通过最后的结果和观测到的序列来训练agent，使得agent获得能力，可以尽可能地得到最好的reward
 
 
 
@@ -121,7 +121,7 @@ simple, known rules
 • End-to-end training, features and policy are jointly optimized toward
 the end goal.
 
-计算能力增加，可以从环境中获得大量信息，以至于取得很高的奖励，而且有了端到端的训练，可以让特征提取和决策网络一起优化。
+计算能力增加，可以从环境中获得大量信息，以至于取得很高的收益，而且有了端到端的训练，可以让特征提取和决策网络一起优化。
 
 
 
@@ -133,7 +133,7 @@ the end goal.
 
 The agent learns to interact with the environment
 
-强化学习研究的问题就是agent和环境的交互。agent在个环境不断地交互，agent把输出的动作给环境，环境进行下一步，将观测和得到的奖励返还给agent。agent的目的就要从这些观测中学到能获得极大化奖励的策略。
+强化学习研究的问题就是agent和环境的交互。agent在个环境不断地交互，agent把输出的动作给环境，环境进行下一步，将观测和得到的收益返还给agent。agent的目的就要从这些观测中学到能获得极大化收益的策略。
 
 ![image-20210607102450201](../Images/image-20210607102450201.png)
 
@@ -143,7 +143,7 @@ The agent learns to interact with the environment
 - Indicate how well agent is doing at step t
 - Reinforcement Learning is based on the maximization of rewards: All goals of the agent can be described by the maximization of expected cumulative reward.
 
-RL定义了奖励函数，奖励是环境给的反馈信号，这个信号表明了agent在某一步采取了某个动作后是否得到了奖励，RL就是想要极大化这个奖励。
+RL定义了奖励函数，收益是环境给的反馈信号，这个信号表明了agent在某一步采取了某个动作后是否得到了收益，RL就是想要极大化这个收益。
 
 Examples of Rewards
 • Chess players play to win:
@@ -165,7 +165,7 @@ Reward may be delayed
 
 Trade-off between immediate reward and long-term reward
 
-agent的目的就是得到一系列动作，使得最终结果的奖励最大化。某个动作可能会有长期的影响，奖励也是有延迟的。RL的一个重点就是近期奖励和长期奖励的权衡，如何获得更多的长期奖励。
+agent的目的就是得到一系列动作，使得最终结果的收益最大化。某个动作可能会有长期的影响，收益也是有延迟的。RL的一个重点就是近期收益和长期收益的权衡，如何获得更多的长期收益。
 
 
 
@@ -176,7 +176,7 @@ agent的目的就是得到一系列动作，使得最终结果的奖励最大化
 What happens next depends on the history
 State is the function used to determine what happens next：<img src="../Images/image-20210607111420599.png" alt="image-20210607111420599" style="zoom:33%;" />
 
-agent在采取当前动作时，会依赖于之前的观测，动作和奖励，所以可以把整个任务的状态看成是历史的函数。
+agent在采取当前动作时，会依赖于之前的观测，动作和收益，所以可以把整个任务的状态看成是历史的函数。
 
 Environment state and agent state
 
@@ -200,7 +200,7 @@ Major Components of an RL Agent
 
 • Policy: agent’s behavior function
 
-决策函数：用来选取下一步的动作
+策略函数：用来选取下一步的动作
 
 
 
@@ -242,14 +242,14 @@ Expected discounted sum of future rewards under a particular policy
 
 <img src="../Images/image-20210608154445157.png" alt="image-20210608154445157" style="zoom:50%;" />
 
-价值函数：对当前状态进行估价，估计在某状态下采取某动作会对之后的结果带来多大的影响，价值大说明进入这个状态采取这个动作越有利。进一步说，就是选择了一个策略后，采取某个动作在未来会获得多大的价值。折价因子：希望在尽可能短的时间内得到更多的奖励，现在获得100元和10年后获得100元最终得到的价值是不一样的。所以对于不同时间的奖励需要乘上相应的折价因子，最后再将他们相加得到价值函数。价值函数实际就是期望。
+价值函数：对当前状态进行估价，估计在某状态下采取某动作会对之后的结果带来多大的影响，价值大说明进入这个状态采取这个动作越有利。进一步说，就是选择了一个策略后，采取某个动作在未来会获得多大的价值。折价因子：希望在尽可能短的时间内得到更多的收益，现在获得100元和10年后获得100元最终得到的价值是不一样的。所以对于不同时间的收益需要乘上相应的折价因子，最后再将他们相加得到价值函数。价值函数实际就是期望。
 
 Model
 A model predicts what the environment will do next
 Predict the next state: <img src="../Images/image-20210608154803882.png" alt="image-20210608154803882" style="zoom:33%;" />
 Predict the next reward: <img src="../Images/image-20210608154819495.png" alt="image-20210608154819495" style="zoom:33%;" />
 
-模型决定了下一个状态是什么样的。包括两部分：状态是怎么转移的，以及下一个奖励是多大。
+模型决定了下一个状态是什么样的。包括两部分：状态是怎么转移的，以及下一个收益是多大。
 
 
 
